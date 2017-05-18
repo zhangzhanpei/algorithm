@@ -56,6 +56,25 @@ function maxHeapSort(arr)
     }
 }
 
+//最大堆插入节点
+function insertNode(arr, x)
+{
+    //先将节点追加到尾部
+    arr.push(x);
+    //新插入的节点的下标
+    let i = arr.length - 1;
+    //与父节点比较大小[父节点下标计算方式 (i + 1) / 2 - 1]
+    while (i > 0 && x > arr[Math.floor((i + 1) / 2) - 1]) {
+        //当插入的元素比父节点大时, 父节点下移。这里不用交换值, 因为保留有传入的x
+        arr[i] = arr[Math.floor((i + 1) / 2) - 1];
+        //继续与上层父节点比较
+        i = Math.floor((i + 1) / 2) - 1;
+    }
+    arr[i] = x;
+}
+
 let a = [10, 8, 11, 8, 14, 9 , 4, 1, 17];
-maxHeapSort(a);
+// maxHeapSort(a);
+buildMaxHeap(a);
+insertNode(a, 100);
 console.log(a);
