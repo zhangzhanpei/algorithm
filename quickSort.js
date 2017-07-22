@@ -22,7 +22,6 @@ function quickSort(left, right, arr) {
     arr[left] = arr[i]; //i和j相遇后, 即一趟过后交换基数和相遇位置的数, 此时左侧的数都比基数小, 右侧的数都比基数大
     arr[i] = base;
 
-    console.log(arr);
     quickSort(left, i - 1, arr); //递归处理左右两半数据
     quickSort(i + 1, right, arr);
 }
