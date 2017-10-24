@@ -15,7 +15,8 @@ func subsets(nums []int) [][]int {
     res := [][]int{{}} //空数组是任何数组的子数组
     for _, val := range nums {
         for _, sub := range res {
-            tmp := make([]int, len(sub)) //这里很奇怪, 直接用sub来append的话数据有问题
+            tmp := make([]int, len(sub))
+            //这里使用copy生成一个新的tmp用于res的append, 如果是直接append(res, sub)的话sub进入下一个迭代时会影响到ret结果
             copy(tmp, sub)
             tmp = append(tmp, val)
             res = append(res, tmp)
