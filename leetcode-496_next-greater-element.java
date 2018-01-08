@@ -16,9 +16,7 @@ public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
             }
         }
     }
-    int[] ret = new int[al.size()];
-    for (int k = 0; k < al.size(); k++) ret[k] = al.get(k);
-    return ret;
+    return al.stream().mapToInt(ele -> ele).toArray();
 }
 
 //查找元素的第一个出现位置
