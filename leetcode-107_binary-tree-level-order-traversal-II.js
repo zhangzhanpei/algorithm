@@ -1,24 +1,22 @@
-//自底向上逐层返回二叉树的元素
-var levelOrderBottom = function(root) {
-    let list = [], ret = [];
-    if (root === null) {
-        return ret;
-    }
-    list.push(root); //list一开始先保存第一层的元素root节点
-    while (list.length) {
-        let len = list.length; //获取当前层的宽度
-        let tmp = [];
-        for (let i = 0; i < len; i++) { //遍历当前层时, 将下一层的元素压进list尾部
-            let node = list.shift(); //当前层的元素逐个弹出, 当前层遍历完后剩下的元素就全是下一层的
-            tmp.push(node.val); //tmp保存了一层的节点的值
-            if (node.left !== null) {
-                list.push(node.left);
-            }
-            if (node.right !== null) {
-                list.push(node.right);
-            }
+/*
+ * 自底向上逐层返回二叉树的元素
+ */
+public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    List<List<Integer>> ret = new ArrayList<>();
+    List<TreeNode> l = new ArrayList<>(); //保存二叉树每层节点
+    if (root == null) return ret;
+    l.add(root);
+    while (!l.isEmpty()) {
+        List<Integer> tmp = new ArrayList<>();
+        int size = l.size();
+        for (int i = 0; i < size; i++) { //遍历一层节点取得值
+            TreeNode node = l.get(0);
+            tmp.add(node.val);
+            if (node.left != null) l.add(node.left);
+            if (node.right != null) l.add(node.right);
+            l.remove(node); //遍历过的节点移除
         }
-        ret.push(tmp);
+        ret.add(0, tmp);
     }
-    return ret.reverse();
-};
+    return ret;
+}
