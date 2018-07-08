@@ -23,10 +23,7 @@ class Solution {
      */
     public static int[] dijkstra(int[][] city) {
         // 这里默认计算第0个城市到其他城市的最短距离，初始化距离数组
-        int[] distance = new int[city.length];
-        for (int i = 0; i < city.length; i++) {
-            distance[i] = city[0][i];
-        }
+        int[] distance = Arrays.copyOf(city[0], city[0].length);
 
         // 标记第0号城市到第0号城市已确定是最短距离
         boolean[] mark = new boolean[city.length];
