@@ -1,14 +1,19 @@
 /**
  * 反转单向链表
  */
-func reverseList(head *ListNode) *ListNode {
-    var last *ListNode
-    current := head
-    for current != nil {
-        next := current.Next
-        current.Next = last
-        last = current
-        current = next
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode prev = null;
+        ListNode next = null;
+        while (head != null) {
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
     }
-    return last
 }
