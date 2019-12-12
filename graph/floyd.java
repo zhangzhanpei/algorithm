@@ -14,7 +14,7 @@ class Solution {
     }
 
     /**
-     * Floyd 算法，多源最短路径（点与点直接的所有距离）
+     * Floyd 算法，多源最短路径（点与点之间的所有距离）
      * @param city 城市间的距离
      * @param origin 起点城市
      * @param target 终点城市
